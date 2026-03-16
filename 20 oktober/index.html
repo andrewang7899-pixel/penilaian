@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="k">
+    <h2 style="color: white;">Quis simple By Andrew Grayson Wang</h2>
+    </div>
+    <div class="all">
+    <div class="soal1">
+        <p> 1: Tag HTML untuk membuat link adalah?</p>
+        <label><input type="radio" name="soal1" value="a"> a. &lt;link&gt;</label><br>
+        <label><input type="radio" name="soal1" value="b"> b. &lt;a&gt;</label><br>
+        <label><input type="radio" name="soal1" value="c"> c. &lt;href&gt;</label><br>
+        <label><input type="radio" name="soal1" value="d"> d. &lt;url&gt;</label><br>
+    </div>
+
+    <div class="soal1">
+        <p> 2: Fungsi JavaScript untuk menampilkan alert ke user adalah?</p>
+        <label><input type="radio" name="soal2" value="a"> a. prompt</label><br>
+        <label><input type="radio" name="soal2" value="b"> b. alert</label><br>
+        <label><input type="radio" name="soal2" value="c"> c. confirm</label><br>
+        <label><input type="radio" name="soal2" value="d"> d. message</label><br>
+    </div>
+
+    <div class="soal1">
+        <p>3: Properti HTML untuk memberi identitas unik pada elemen?</p>
+        <label><input type="radio" name="soal3" value="a"> a. class</label><br>
+        <label><input type="radio" name="soal3" value="b"> b. name</label><br>
+        <label><input type="radio" name="soal3" value="c"> c. id</label><br>
+        <label><input type="radio" name="soal3" value="d"> d. rel</label><br>
+    </div>
+
+    <div class="soal1">
+        <p> 4: Bagaimana cara memanggil elemen dengan ID di JavaScript?</p>
+        <label><input type="radio" name="soal4" value="a"> a. getId</label><br>
+        <label><input type="radio" name="soal4" value="b"> b. document.id</label><br>
+        <label><input type="radio" name="soal4" value="c"> c. document.getElementById</label><br>
+        <label><input type="radio" name="soal4" value="d"> d. select</label><br>
+    </div>
+
+    <div class="soal1">
+        <p>5: Variabel di JavaScript bisa dideklarasikan dengan kata kunci...</p>
+        <label><input type="radio" name="soal5" value="a"> a. let, const, var</label><br>
+        <label><input type="radio" name="soal5" value="b"> b. variable, let</label><br>
+        <label><input type="radio" name="soal5" value="c"> c. var, define, let</label><br>
+        <label><input type="radio" name="soal5" value="d"> d. define, set, var</label><br>
+    </div>
+     <div class="soal1">
+        <p>6: apa fungsi p</p>
+        <label><input type="radio" name="soal6" value="a"> a. memuat gambar</label><br>
+        <label><input type="radio" name="soal6" value="b"> b. menambahkan teks h2</label><br>
+        <label><input type="radio" name="soal6" value="c"> c. menambahkan teks paragraf</label><br>
+        <label><input type="radio" name="soal6" value="d"> d. menambahkan teks h3</label><br>
+    </div>
+     <div class="soal1">
+        <p>7: apa fungsi backround color</p>
+        <label><input type="radio" name="soal7" value="a"> a. menambahkan warna pada teks</label><br>
+        <label><input type="radio" name="soal7" value="b"> b. menambahakan warna pada backround element</label><br>
+        <label><input type="radio" name="soal7" value="c"> c. menambahakan font size</label><br>
+        <label><input type="radio" name="soal7" value="d"> d. memnambahakan teks</label><br>
+    </div>
+     <div class="soal1">
+        <p>8: apa tag yang digunakan untuk membuat title </p>
+        <label><input type="radio" name="soal8" value="a"> a. title</label><br>
+        <label><input type="radio" name="soal8" value="b"> b. tle</label><br>
+        <label><input type="radio" name="soal8" value="c"> c. judul</label><br>
+        <label><input type="radio" name="soal8" value="d"> d. dul</label><br>
+    </div>
+     <div class="soal1">
+        <p>9: apa fungsi overflow scroll</p>
+        <label><input type="radio" name="soal9" value="a"> a. membuat element bisa di scroll</label><br>
+        <label><input type="radio" name="soal9" value="b"> b. membuat ada gambar </label><br>
+        <label><input type="radio" name="soal9" value="c"> c. menambahakan teks</label><br>
+        <label><input type="radio" name="soal9" value="d"> d. membesarkan gambar</label><br>
+    </div>
+    <div class="soal1">
+        <p>10: apa fungsi display none</p>
+        <label><input type="radio" name="soal10" value="a"> a. membuat element bisa hilang</label><br>
+        <label><input type="radio" name="soal10" value="b"> b. membuat element bisa di scroll</label><br>
+        <label><input type="radio" name="soal10" value="c"> c. menambahakan element</label><br>
+        <label><input type="radio" name="soal10" value="d"> d. mengubah warna element</label><br>
+    </div> 
+    </div>
+    <div class="B">
+    <button onclick="cekJawaban()">Cek Jawaban</button>
+    </div>
+    <div class="nilai">
+    <p id="hasil" style="font-size: 80px;"></p>
+    </div>
+    <div class="tul">   
+        <h2>Nilai Anda</h2>
+    </div>
+    <script>
+        const kunci = {
+            soal1: 'b',
+            soal2: 'b',
+            soal3: 'c',
+            soal4: 'c',
+            soal5: 'a',
+            soal6: 'c',
+            soal7: 'b',
+            soal8: 'A',
+            soal9: 'a',
+            soal10: 'a',
+
+        };
+
+        function cekJawaban() {
+            let skor = 0;
+            const total = Object.keys(kunci).length;
+
+            for (let nomor in kunci) {
+                const jawaban = document.querySelector(`input[name="${nomor}"]:checked`);
+                if (jawaban && jawaban.value === kunci[nomor]) {
+                    skor += 10;
+                }
+            }
+            
+            let hasil = `${skor}  `;
+
+            if (skor === total) {
+               
+            } else if (skor >= 10) {
+               
+            } else {
+               
+            }
+
+            document.getElementById("hasil").innerHTML = hasil;
+        }
+    </script> 
+    
+</body>
+</html>

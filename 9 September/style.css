@@ -1,0 +1,122 @@
+body {
+    align-items: center;
+    align-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.utama{
+    width: 100%;
+    height: 80vh;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.th{
+    width: 100%;
+    height: 10vh;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: space-between;    
+
+}
+.e{
+    width: 5%;
+    height: 10vh;
+    border: 2px solid blue;
+    display: flex;
+     
+}
+
+.a{
+    width: 10%;
+    height: 10vh;
+    border: 2px solid blue;
+    
+     
+}
+.b{
+    width: 2%;
+    height: 10vh;
+    border: 2px solid blue;
+    
+     
+}
+
+
+
+.ko{
+    width: 80%;
+    height: 60vh;
+    border: 2px solid magenta;
+}
+
+img{
+    width: 20%;
+    margin-left: 35%;
+    margin-bottom: 2%;
+    border: 2px solid red;
+}
+
+p {
+    margin-left: 15%;
+    width: 60%;
+    height: 25px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 13pt;
+    outline: none;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    background: linear-gradient(70deg, #ffffa1, rgb(158, 168, 68));
+    max-width: 800px;
+    align-items: center;
+    margin-left: 22%;
+    padding: 20px;
+}
+
+select,input {
+    margin-left: 15%;
+    width: 60%;
+    height: 25px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 13pt;
+    outline: none;
+}
+
+select:focus, input:focus {
+    background-color: black;
+    color: white;
+    transition: 4ms;
+}
+
+button {
+    width: 10%;
+    height: 25px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 13pt;
+    outline: none;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+    transition: 4ms;
+}
+
+@keyframes pulseglow {
+    
+}

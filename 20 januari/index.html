@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Nilai Siswa</title>
+    
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .bungkus {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 { text-align: center; color: #333; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Agar padding tidak merusak lebar */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background-color: #218838; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th { background-color: #f8f9fa; }
+        .lulus { color: green; font-weight: bold; }
+        .gagal { color: red; font-weight: bold; }
+        #ratarata {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+
+<div class="bungkus">
+    <h2>Aplikasi Input Nilai Siswa</h2>
+
+    <input type="text" id="nama" placeholder="Input nama siswa">
+    <input type="number" id="nilai" placeholder="Input nilai siswa ">
+    <input type="number" id="kehadiran" placeholder="Input kehadiran ">
+
+    <button onclick="tambahSiswa()">Input Siswa</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Nilai</th>
+                <th>Kehadiran</th>
+                <th>Grade</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tableSiswa">
+            <!-- Data akan muncul di sini -->
+        </tbody>
+    </table>
+
+    <div id="ratarata">Rata-rata Nilai: 0</div>
+</div>
+
+<script>
+    const daftarSiswa = [];
+
+    function tambahSiswa() {
+        const namaInput = document.getElementById('nama');
+        const nilaiInput = document.getElementById('nilai');
+        const kehadiranInput = document.getElementById('kehadiran');
+
+        const nama = namaInput.value;
+        const nilai = parseFloat(nilaiInput.value);
+        const kehadiran = parseFloat(kehadiranInput.value);
+
+        
+        if (nama === "" || isNaN(nilai) || isNaN(kehadiran)) {
+            alert("Semua form harus diisi!");
+            return;
+        }
+        if (nilai < 0 || nilai > 100 || kehadiran < 0 || kehadiran > 100) {
+            alert("Nilai dan kehadiran harus di antara 0 - 100");
+            return;
+        }
+
+        let grade;
+        if (nilai >= 85) grade = "A";
+        else if (nilai >= 75) grade = "B";
+        else if (nilai >= 65) grade = "C";
+        else if (nilai >= 50) grade = "D";
+        else grade = "E";
+
+        const status = (nilai >= 75 && kehadiran >= 75) ? "Lulus" : "Tidak Lulus";
+
+        daftarSiswa.push({ nama, nilai, kehadiran, grade, status });
+
+        renderTable();
+
+        namaInput.value = "";
+        nilaiInput.value = "";
+        kehadiranInput.value = "";
+    }
+
+    function renderTable() {
+        const tableBody = document.getElementById('tableSiswa');
+        const ratarataDiv = document.getElementById('ratarata');
+        tableBody.innerHTML = "";
+        
+        let totalNilai = 0;
+
+        daftarSiswa.forEach(siswa => {
+            totalNilai += siswa.nilai;
+            const statusClass = (siswa.status === "Lulus") ? "lulus" : "gagal";
+            
+            const row = `<tr>
+                <td>${siswa.nama}</td>
+                <td>${siswa.nilai}</td>
+                <td>${siswa.kehadiran}%</td>
+                <td>${siswa.grade}</td>
+                <td class="${statusClass}">${siswa.status}</td>
+            </tr>`;
+            tableBody.innerHTML += row;
+        });
+
+        const average = (totalNilai / daftarSiswa.length).toFixed(2);
+        ratarataDiv.innerText = `Rata-rata Nilai Kelas: ${average}`;
+    }
+</script>
+
+</body>
+</html>

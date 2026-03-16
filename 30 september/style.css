@@ -1,0 +1,221 @@
+body {
+    background-color: rgb(10, 113, 24);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.kotak {
+    width: 100%;
+    height: 8vh;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kotak h2{
+    color: white;
+}
+
+.judul {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.judul h2 {
+    margin: 0;
+    color: #111;
+    letter-spacing: 1px;
+}
+
+.box {
+    width: 80%;
+    max-width: 1200px;
+    background-color: rgb(255, 255, 255);
+    margin: 40px auto;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.bungkus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.tulis h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.bungkus > div:nth-child(2) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 48px;
+}
+
+video {
+    width: 420px;
+    height: 320px;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+   
+
+.photobox-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.photobox-photos::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+}
+
+.photobox-photos::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+}
+
+.photobox-photos img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.b {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+button {
+    padding: 12px 32px;
+    background: linear-gradient(90deg, #4f8cff 0%, #38e6ff 100%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #38e6ff 0%, #4f8cff 100%);
+    transform: scale(1.05);
+}
+
+
+
+
+/* ========================= */
+/* RESPONSIVE TABLET */
+/* ========================= */
+@media (max-width: 900px) {
+
+    .box {
+        width: 95%;
+        padding: 25px;
+    }
+
+    video {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+
+    .photobox-photos img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+
+/* ========================= */
+/* RESPONSIVE HP */
+/* ========================= */
+@media (max-width: 670px) {
+
+    .kotak {
+        height: auto;
+        padding: 10px;
+    }
+
+    .kotak h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .box {
+        width: 95%;
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .bungkus > div:nth-child(2) {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    video {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        margin: 0;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .photobox-photos {
+        width: 100%;
+        max-width: 350px;
+        grid-template-columns: 1fr 1fr;
+        max-height: none;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+    }
+
+    .photobox-photos img {
+        width: 100%;
+        height: auto;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+}
+
+
+/* ========================= */
+/* RESPONSIVE HP KECIL */
+/* ========================= */
+@media (max-width: 670px) {
+
+    .tulis h1 {
+        font-size: 18px;
+    }
+
+    .kotak h2 {
+        font-size: 16px;
+    }
+
+}

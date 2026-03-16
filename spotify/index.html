@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background: linear-gradient(to right, #1a2e1a, #0d1a0d);
+      color: white;
+    }
+
+    /* === SIDEBAR === */
+    .sidebar {
+      width: 220px;
+      background: #123123;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar .menu a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      padding: 6px 0;
+      pointer-events: none;  /* tidak bisa diklik */
+      cursor: not-allowed;
+    }
+
+    .sidebar .playlist {
+      margin-top: 20px;
+    }
+
+    .sidebar .playlist h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar .playlist ul {
+      list-style: none;
+    }
+
+    .sidebar .playlist li {
+      font-size: 13px;
+      margin: 5px 0;
+      color: #aaa;
+    }
+
+    .new-playlist {
+      margin-top: 20px;
+      height: 100px;
+      background: yellow;
+      border-radius: 6px;
+    }
+
+    .welcome {
+      margin-top: auto;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      background: purple;
+      border-radius: 50%;
+      margin: 10px auto 0;
+    }
+
+    /* === MAIN CONTENT === */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    /* Search bar */
+    .search-bar {
+      margin-bottom: 15px;
+    }
+    .search-bar input {
+      width: 300px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    /* Playlist box */
+    .playlist-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .playlist-cover {
+      width: 140px;
+      height: 140px;
+      background: #fff;
+      margin-right: 20px;
+      border-radius: 6px;
+    }
+    .playlist-info h2 {
+      margin-bottom: 5px;
+    }
+    .download-btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #1db954;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Tabel playlist */
+    .song-table {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    .song-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .song-table th,
+    .song-table td {
+      padding: 10px;
+      border: 1px solid #2c2c2c;
+    }
+    .song-table th {
+      background: #0a3d0a;
+    }
+    .song-table tr:nth-child(even) {
+      background: #123123;
+    }
+
+    /* Player bawah */
+    .player {
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .progress-bar {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .controls {
+      text-align: center;
+    }
+    .controls button {
+      margin: 0 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background: #1db954;
+      color: white;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background: #17a444;
+    }
+  </style>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="menu">
+      <a>Home</a>
+      <a>Browse</a>
+      <a>Radio</a>
+    </div>
+    <div class="playlist">
+      <h4>Playlist</h4>
+      <ul>
+        <li>Cahaya Bidadari - Batu Nisan</li>
+        <li>Blue - Yun-Kai</li>
+        <li>Hip-Hop Joga Pondation</li>
+        <li>MCR - Cencer</li>
+        <li>Eminem - Mockingbird</li>
+      </ul>
+    </div>
+    <div class="new-playlist"></div>
+    <div class="welcome">
+      Welcome Mr.Ilham
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" placeholder="Cari musik">
+    </div>
+
+    <!-- Playlist Box -->
+    <div class="playlist-box">
+      <div class="playlist-cover"></div>
+      <div class="playlist-info">
+        <h2>undefined</h2>
+        <p>undefined</p>
+        <button class="download-btn">Download</button>
+      </div>
+    </div>
+
+    <!-- Song Table -->
+    <div class="song-table">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Artis</th>
+            <th>Album</th>
+            <th>Waktu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Blue</td><td>Yung Kai</td><td>Blue</td><td>03:41</td></tr>
+          <tr><td>2</td><td>Cahaya Bidadari</td><td>Batu Nisan</td><td>Cahaya Bidadari</td><td>08:12</td></tr>
+          <tr><td>3</td><td>Ora Cucul Ora Ngebul</td><td>Jogja Hiphop Foundation</td><td>Rotra</td><td>04:46</td></tr>
+          <tr><td>4</td><td>Mockingbird</td><td>Eminem</td><td>Mockingbird</td><td>04:17</td></tr>
+          <tr><td>5</td><td>Cancer</td><td>MCR</td><td>Cancer</td><td>03:22</td></tr>
+          <tr><td>6</td><td>Everybody’s Changing</td><td>Keane</td><td>Changing</td><td>03:37</td></tr>
+          <tr><td>7</td><td>Mary On A Cross</td><td>Ghost</td><td>Mary On A Cross</td><td>04:32</td></tr>
+          <tr><td>8</td><td>The Spirit Carries On</td><td>Dream Theater</td><td>The Spirit</td><td>06:40</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Player -->
+    <div class="player">
+      <div class="progress-bar">
+        <span>0:00 / 4:17</span>
+      </div>
+      <div class="controls">
+        <button>Prev</button>
+        <button>Play/Pause</button>
+        <button>Stop</button>
+        <button>Next</button>
+        <button>Repeat: Off</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan For Loop </title>
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 20px;
+}
+
+.bungkus {
+    width: 400px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-left: 500px;
+    margin-top: 100px;  
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #8b8585;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#output {
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+    </style>
+    <div class="bungkus">
+        <input type="number" id="numberInput" placeholder="masukan angka">
+        <button onclick="tampilkanAngka()">Tampilkan </button>
+
+        <h3>Hasil</h3>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function tampilkanAngka(){ 
+            let angka = document.getElementById("numberInput").value;
+            let output = document.getElementById("output");
+
+            let genap = "";
+            let ganjil = "";
+            let tiga = "";
+            let empat = "";
+
+            output.innerHTML = "";
+
+            // Menampilkan angka 1 sampai input
+            output.innerHTML += "<strong>Angka 1 sampai " + angka + ":</strong><br>";
+            for(let i = 1; i <= angka; i++){
+                output.innerHTML += i + " ";
+            }
+
+            // Loop genap, ganjil, dan kelipatan 3
+            for(let i = 1; i <= angka; i++){
+                if(i % 2 === 0){
+                    genap += i + " ";
+                }
+                if(i % 2 !== 0){
+                    ganjil += i + " ";
+                }
+                if(i % 3 === 0){
+                    tiga += i + " ";
+                }
+                if(i % 4 === 0){
+                    empat += i + " ";
+                }
+            }
+
+            output.innerHTML += "<br><br><strong>Angka Genap:</strong><br>" + genap;
+            output.innerHTML += "<br><br><strong>Angka Ganjil:</strong><br>" + ganjil;
+            output.innerHTML += "<br><br><strong>Kelipatan 3:</strong><br>" + tiga;
+             output.innerHTML += "<br><br><strong>Kelipatan 4:</strong><br>" + empat;
+
+        }
+    </script>
+</body>
+</html>

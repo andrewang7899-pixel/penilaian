@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f4f8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background-color: #a0e7e5;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff8c42;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        #passOut {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            user-select: all;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Password Generator</h1>
+
+    <label for="len">Password Length:</label>
+    <input type="number" id="len" value="12" min="6">
+
+    <div>
+        <input type="checkbox" id="upper" checked>
+        <label for="upper">Include Uppercase</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="nums" checked>
+        <label for="nums">Include Numbers</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="special" checked>
+        <label for="special">Include Special Characters</label>
+    </div>
+
+    <div>
+        <button onclick="generate()">Generate Password</button>
+        <button onclick="resetForm()">Reset</button>
+    </div>
+
+    <input type="text" id="passOut" readonly value="Your Password Shows Here!">
+</div>
+
+<script>
+    function genPass(len, upper, nums, special) {
+        const lower = "abcdefghijklmnopqrstuvwxyz";
+        const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const numChars = "0123456789";
+        const specialChars = "!@#$%^&*()_+|?><>:;[]{}=-";
+
+        let chars = lower;
+        if (upper) chars += upperChars;
+        if (nums) chars += numChars;
+        if (special) chars += specialChars;
+
+        let pass = '';
+        for (let i = 0; i < len; i++) {
+            const randInt = Math.floor(Math.random() * chars.length);
+            pass += chars[randInt];
+        }
+
+        // Ensure at least one character from each selected type
+        let passArray = pass.split('');
+        let requiredChars = [];
+        if (upper) requiredChars.push(upperChars[Math.floor(Math.random() * upperChars.length)]);
+        if (nums) requiredChars.push(numChars[Math.floor(Math.random() * numChars.length)]);
+        if (special) requiredChars.push(specialChars[Math.floor(Math.random() * specialChars.length)]);
+
+        for (let i = 0; i < requiredChars.length; i++) {
+            passArray[i] = requiredChars[i];
+        }
+
+        return passArray.join('');
+    }
+
+    function generate() {
+        const len = parseInt(document.getElementById("len").value);
+        const upper = document.getElementById("upper").checked;
+        const nums = document.getElementById("nums").checked;
+        const special = document.getElementById("special").checked;
+
+        const pass = genPass(len, upper, nums, special);
+        const passOut = document.getElementById("passOut");
+        passOut.value = pass;
+
+        // Auto-copy to clipboard
+        passOut.select();
+        passOut.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Password copied to clipboard!");
+    }
+
+    function resetForm() {
+        document.getElementById("len").value = 12;
+        document.getElementById("upper").checked = true;
+        document.getElementById("nums").checked = true;
+        document.getElementById("special").checked = true;
+        document.getElementById("passOut").value = "Your Password Shows Here!";
+    }
+</script>
+
+</body>
+</html>

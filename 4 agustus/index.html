@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+    /* Reset dan dasar */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+        font-family: Arial, sans-serif;
+        background: #222;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .bks-utama {
+        background: #333;
+        padding: 30px 40px;
+        border-radius: 15px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    h1 { text-align: center; margin-bottom: 20px; }
+    input, select, button {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+    }
+
+    button {
+        background: brown;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover { background: #a52a2a; }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18pt;
+        text-align: center;
+        color: #ffd700;
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 500px){
+        .bks-utama {
+            padding: 20px;
+        }
+
+        input, select, button {
+            font-size: 18px;
+            padding: 12px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="bks-utama">
+    <h1>Temperature Converter</h1>
+
+    <input type="number" id="textBox" placeholder="Enter Temperature">
+
+    <label>Pilih Unit Awal :</label>
+    <select id="unit1">
+        <option value="">Pilih</option> 
+        <option value="c">Celsius</option>
+        <option value="r">Reamur</option>
+        <option value="f">Fahrenheit</option>   
+        <option value="k">Kelvin</option>              
+    </select>
+
+    <label>Pilih Unit Akhir :</label>
+    <select id="unit2">
+        <option value="">Pilih</option>
+        <option value="c">Celsius</option>
+        <option value="r">Reamur</option>
+        <option value="f">Fahrenheit</option>   
+        <option value="k">Kelvin</option>              
+    </select>
+
+    <button type="button" onclick="convert()">Hasil</button>
+
+    <h2 id="result">Answer</h2>
+</div>
+
+<script>
+function convert(){
+    const suhu = parseFloat(document.getElementById('textBox').value);
+    const dari = document.getElementById('unit1').value;
+    const ke = document.getElementById('unit2').value;
+
+    if(isNaN(suhu) || dari=="" || ke==""){
+        alert("Masukkan suhu dan pilih unit!");
+        return;
+    }
+
+    // Konversi semua ke Celcius dulu
+    let celcius;
+    switch(dari){
+        case 'c': celcius = suhu; break;
+        case 'r': celcius = suhu * 5/4; break;
+        case 'f': celcius = (suhu - 32) * 5/9; break;
+        case 'k': celcius = suhu - 273.15; break;
+    }
+
+    // Konversi dari Celcius ke unit target
+    let hasil;
+    switch(ke){
+        case 'c': hasil = celcius; break;
+        case 'r': hasil = celcius * 4/5; break;
+        case 'f': hasil = celcius * 9/5 + 32; break;
+        case 'k': hasil = celcius + 273.15; break;
+    }
+
+    document.getElementById('result').innerText = `Hasil: ${hasil.toFixed(2)} ${ke.toUpperCase()}`;
+}
+</script>
+
+</body>
+</html>

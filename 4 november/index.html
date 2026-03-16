@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="canvas" width="800" height="700"></canvas>
+    <div class="toolbox">
+        <button id="decrease"></button>
+        <span id="size">10</span>
+        <button id="increase">+</button>
+        <input type="color" id="color">
+        <button id="clear">X</button>
+
+
+
+    </div>
+
+    <script>
+        const canvas =document.getElementById('canvas')        
+        const increaseBtn = document.getElementById('increase')
+        const decreaseBtn = document.getElementById('decrease')
+        const sizeEl = document.getElementById('size')
+        const colorEl = document.getElementById('color')
+        const clearEl = document.getElementById('clear')
+
+        const ctx = canvas.getContext('2d')
+
+        let size = 10;
+        let isPreses = false;
+        colorEl.value = colorEl.value;
+        let color = colorEl.value;
+        let x;
+        let y;
+
+
+        canvas.addEventListener('mousedown',(e)=>{
+            isPreses = true ;
+            x = e.offsetX
+            y = e.offsetY
+    })
+
+    document.getElementById('mouseup', (e)=> {
+        isPreses = false
+        x =undefined
+        y = undefined
+    })
+
+    canvas.addEventListener('mousemove',(e)=>{
+        if(isPreses){
+            const x2 = e.offsetX
+            const y2 = e.offsety
+
+            drawCircle(x2,y2)
+            drawLine(x,y,x2,y2)
+            
+            x = x2
+            y = y2
+        }
+    })
+
+    function drawCircle(x,y){
+        ctx.beginpath()
+        ctx.arc(x,y,size,0,Math.pI *2)
+        ctx.fillstyle= color
+        ctx.fill()
+    }
+     function drawLine(x1,y1,x2,y2){
+        ctx.beginpath();
+        ctx.moveTo(x1,y1)
+        ctx.lineTo(x2,y2)
+        ctx.strokestyle = color
+        ctx.linewidth =size * 2
+       }
+       function updateSizeOnScreen(){
+        sizeEl.innerText = size
+       }
+       increaseBtn.addEventListener('click', ()=>{
+       size += 5
+       if(size > 5){
+        size = 15
+       }
+       updateSizeOnScreen()
+    })   
+    decreaseBtn.addEventListener('click',()=> {
+        size -= 5
+        if (size < 5){
+            size = 5
+        }
+        updateSizeOnScreen()
+    })
+    colorEl.addEventListener('change',(e)=> color = e.target.value)
+    colorEl.addEventListener('click',() => ctx.clearRect(0,0,canvas.width, canvas.height))
+    .document.getElementById("box").bacrounf
+    </script>
+</body>
+</html>

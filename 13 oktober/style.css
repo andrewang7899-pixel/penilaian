@@ -1,0 +1,180 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* HEADER */
+.header{
+    background-color:maroon;
+    width:100%;
+    height:15vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+}
+
+.header h1{
+    color:white;
+}
+
+.sign h5{
+    color:white;
+}
+
+/* CONTAINER */
+.container{
+    display:flex;
+}
+
+/* SIDEBAR */
+.kiri{
+    width:200px;
+    background-color:maroon;
+    height:85vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    padding-bottom:40px;
+}
+
+.kiri h5{
+    color:white;
+    margin-top:10px;
+}
+
+.bulet{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background-color:aliceblue;
+}
+
+/* CONTENT */
+.kanan{
+    flex:1;
+    padding:30px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+}
+
+input{
+    height:40px;
+    border-radius:8px;
+    border:0;
+    background-color:rgb(215,215,215);
+    padding:0 10px;
+}
+
+button{
+    background-color:maroon;
+    color:white;
+    height:40px;
+    width:80px;
+    font-size:10pt;
+    border:0;
+    border-radius:5px;
+    margin-left:10px;
+}
+
+/* OPERATOR INFO */
+#operatorInfo{
+    margin-top:15px;
+}
+
+/* HARGA */
+.harga-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:20px;
+}
+
+.harga-item{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    background-color:rgb(215,215,215);
+    width:150px;
+    height:60px;
+    font-size:14pt;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+/* HARGA ITEM */
+.harga-item{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    background-color:rgb(215,215,215);
+    width:150px;
+    height:60px;
+    font-size:14pt;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.harga-item:hover{
+    background-color:maroon;
+    color:white;
+}
+
+/* PAYMENT */
+.payment-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:15px;
+}
+
+.payment-item{
+    width:150px;
+    height:50px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:rgb(215,215,215);
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.payment-item:hover{
+    background-color:maroon;
+    color:white;
+}
+
+/* RESPONSIVE */
+@media(max-width:677px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .kiri{
+        width:100%;
+        height:120px;
+        flex-direction:row;
+        justify-content:center;
+        gap:10px;
+    }
+
+    .kanan{
+        padding:20px;
+    }
+
+}

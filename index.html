@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrew Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ai kode 11-98 */
+/* ===== RESET ===== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background:#1b002b;
+color:white;
+line-height:1.6;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* ===== NAVBAR ===== */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+background:rgba(27,0,43,0.95);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+.logo{
+font-weight:600;
+font-size:22px;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a:hover{
+color:#ff5fd2;
+}
+
+/* ===== SECTIONS ===== */
+
+section{
+padding:120px 8%;
+}
+
+h1,h2,h3{
+margin-bottom:20px;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+text-align:center;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:0.8;
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 26px;
+border-radius:30px;
+background:linear-gradient(45deg,#ff5fd2,#ffa95f);
+margin:5px;
+}
+
+/* ===== ABOUT ===== */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+}
+
+/* ===== SERVICES ===== */
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#2b0144;
+padding:25px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+background:#35025b;
+}
+
+/* ===== PORTFOLIO ===== */
+
+.portfolio-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.portfolio-item{
+background:#2b0144;
+border-radius:15px;
+overflow:hidden;
+}
+
+.portfolio-item img{
+width:100%;
+height: 22vh;
+display:block;
+justify-content: space-between;
+}
+
+.portfolio-item div{
+padding:15px;
+}
+
+/* ===== CONTACT ===== */
+
+.contact form{
+max-width:600px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input, textarea{
+padding:12px;
+border:none;
+border-radius:10px;
+background:#2b0144;
+color:white;
+}
+
+textarea{
+resize:none;
+height:120px;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+text-align:center;
+padding:40px;
+opacity:0.7;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+.about{
+grid-template-columns:1fr;
+}
+.hero h1{
+font-size:26px;
+}
+nav{
+font-size: 75%;
+}
+.logo{
+   font-size: 170%;
+   gap: 2%;
+   margin-left: -12px;
+}
+nav ul{
+display:flex;
+gap:15px;
+list-style:none;
+}
+
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+<div class="logo">Andrew.</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>    
+<li><a href="#portfolio">Work</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+<h1>Frontend Web Developer</h1>
+<p>Based in London — crafting modern web experiences.</p>
+<div>
+<a class="btn">Contact Me</a>
+<a class="btn">My Resume</a>
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<h2>About Me</h2>
+
+<div class="about">
+   <img src="img1/Screenshot 2026-02-23 071619.png" alt="">
+<div>
+<p>
+I am a passionate frontend developer with experience building modern,
+responsive web interfaces using cutting-edge technologies.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+<h2>My Services</h2>
+
+<div class="services-grid">
+
+<div class="card">
+<h3>Web Design</h3>
+<p>Modern UI/UX web interface design.</p>
+</div>
+
+<div class="card">
+<h3>Mobile Apps</h3>
+<p>Responsive mobile-first solutions.</p>
+</div>
+
+<div class="card">
+<h3>UI/UX</h3>
+<p>User-centered design systems.</p>
+</div>
+
+<div class="card">
+<h3>Graphics</h3>
+<p>Creative visual branding.</p>
+</div>
+
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+<h2>Latest Work</h2>
+
+<div class="portfolio-grid">
+
+<div class="portfolio-item">
+    <!-- foto ke 1 -->
+<img src="img/Screenshot (36).png" alt="">
+
+<div><a href="30 september/index.html">foto box</a></div>
+</div>
+
+<div class="portfolio-item">
+   <!-- foto ke 2 -->
+<img src="img/Screenshot (35).png" alt="">
+
+<div><a href="13 januari/index.html ">for loop</a></div>
+</div>
+
+<div class="portfolio-item">
+   <!-- foto ke 3 -->
+<img src="img/Screenshot (38).png" alt="">
+
+<div><a href="28 oktober/index.html">carousel</a></div>
+</div>
+
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img/Screenshot (39).png" alt="">
+
+<div><a href="spotify/index.html">spotify</a></div>
+</div>
+
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (41).png" alt="">
+
+<div><a href="7 oktober/index.html">scrool animasi</a></div>
+</div>
+
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (42).png" alt="">
+
+<div><a href="13 oktober/index.html">top up pulsa</a></div>
+</div>
+
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (43).png" alt="">
+
+<div><a href="20 oktober/index.html">quis simple</a></div>
+</div>
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (55).png" alt="">
+
+<div><a href="3 november/index.html">password generator</a></div>
+</div>
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (45).png" alt="">
+
+<div><a href="20 januari/index.html">aplikasi nilai input siswa</a></div>
+</div>
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (46).png" alt=""> 
+
+<div><a href="4 november/index.html">drawing app</a></div>
+</div>
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (57).png" alt="">
+
+<div><a href="9 September/index.html">tiket id</a></div>
+</div>
+<div class="portfolio-item">
+   <!-- foto ke 4 -->
+<img src="img1/Screenshot (58).png" alt="">
+
+<div><a href="4 agustus/index.html">temperature</a></div>
+</div>
+
+</div>
+</section>
+
+
+<section class="contact" id="contact">
+<h2>Get In Touch</h2>
+
+<form>
+<input type="text" placeholder="Your name">
+<input type="email" placeholder="Your email">
+<textarea placeholder="Your message"></textarea>
+<button class="btn">Submit</button>
+</form>
+
+</section>
+
+
+<footer>
+© 2026 Andrew Portfolio — fly as high as possible.
+</footer>
+
+</body>
+</html>

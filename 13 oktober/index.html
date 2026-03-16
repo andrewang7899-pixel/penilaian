@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Up Pulsa</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.header {
+    background-color: maroon;
+    color: white;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.sign h5 {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sign h5:hover {
+    color: #ffdede;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 85vh;
+}
+
+.kiri {
+    width: 150px;
+    background-color: maroon;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+}
+
+.kiri h5 {
+    color: white;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.bulet {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    margin-bottom: 10px;
+}
+
+.kanan {
+    flex: 1;
+    padding: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+input {
+    height: 40px;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgb(230, 230, 230);
+    padding: 0 10px;
+    font-size: 1rem;
+    width: 40%;
+    max-width: 300px;
+}
+
+button {
+    background-color: maroon;
+    color: white;
+    height: 40px;
+    width: 80px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #990000;
+}
+
+#operatorInfo {
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.harga-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.harga-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(230,230,230);
+    width: 150px;
+    height: 60px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.harga-item:hover,
+.harga-item.active {
+    background-color: maroon;
+    color: white;
+    transform: scale(1.05);
+}
+
+.payment-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.payment-item {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230,230,230);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.payment-item:hover,
+.payment-item.active {
+    background-color: maroon;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    .kiri {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 10px;
+    }
+    .kanan {
+        padding: 20px 10px;
+    }
+    input {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+    .harga-item,
+    .payment-item {
+        width: 45%;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header h1 {
+        font-size: 17px;
+    }
+    .sign h5 {
+        font-size: 0.8rem;
+    }
+    .bulet {
+        width: 50px;
+        height: 50px;
+    }
+    .harga-item,
+    .payment-item {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+        margin: 10px 0 20px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Top Up Pulsa by Andrew Grayson Wang</h1>
+    <div class="sign"><h5>Sign Out</h5></div>
+</div>
+
+<div class="container">
+
+    <div class="kiri">
+        <div class="bulet"></div>
+        <h5>Welcome</h5>
+    </div>
+
+    <div class="kanan">
+        <label>Masukan Nomor Hp Tujuan :</label>
+        <input type="text" id="phone" placeholder="Contoh: 08123456789">
+        <button>Bayar</button>
+
+        <div id="operatorInfo"></div>
+        <div id="hargaList"></div>
+        <div id="paymentMethod"></div>
+    </div>
+
+</div>
+
+<script>
+const operatorData = [
+{ name: "Telkomsel", preFixes: ["0811","0812","0813","0821","0822","0823","0852","0853"], harga: [5000,10000,15000,25000,50000,100000] },
+{ name: "Indosat", preFixes: ["0814","0815","0816","0855","0856","0857","0858"], harga: [5000,10000,15000,25000,50000,100000] },
+{ name: "Tri", preFixes: ["0895","0896","0897","0898","0899"], harga: [5000,10000,15000,25000,50000,100000] },
+{ name: "AXIS", preFixes: ["0831","0832","0833","0838"], harga: [5000,10000,15000,25000,50000,100000] },
+{ name: "Smartfren", preFixes: ["0881","0882","0883","0884","0885","0886","0887","0888","0889"], harga: [5000,10000,15000,25000,50000,100000] },
+{ name: "XL", preFixes: ["0817","0818","0819","0859","0877","0878"], harga: [5000,10000,15000,25000,50000,100000] }
+];
+
+const phoneInput = document.getElementById("phone");
+const operatorInfo = document.getElementById("operatorInfo");
+const hargaList = document.getElementById("hargaList");
+const paymentMethod = document.getElementById("paymentMethod");
+
+phoneInput.addEventListener("input", function(){
+    const nomor = phoneInput.value.trim();
+    if(nomor.length < 4){
+        operatorInfo.innerText = "";
+        hargaList.innerHTML = "";
+        paymentMethod.innerHTML = "";
+        return;
+    }
+    const prefix = nomor.slice(0,4);
+    let operator = operatorData.find(op => op.preFixes.includes(prefix));
+    if(operator){
+        operatorInfo.innerText = "Operator Terdeteksi : " + operator.name;
+        hargaList.innerHTML = `
+        <div class="harga-container">
+        ${operator.harga.map(h =>
+            `<div class="harga-item" onclick="pilihPulsa(${h})">
+            Rp ${h.toLocaleString("id-ID")}
+            </div>`
+        ).join("")}
+        </div>
+        `;
+    } else {
+        operatorInfo.innerText = "Operator tidak dikenali";
+        hargaList.innerHTML = "";
+        paymentMethod.innerHTML = "";
+    }
+});
+
+function pilihPulsa(harga){
+    paymentMethod.innerHTML = `
+    <h3>Pilih Metode Pembayaran</h3>
+    <div class="payment-container">
+        <div class="payment-item">DANA</div>
+        <div class="payment-item">OVO</div>
+        <div class="payment-item">GoPay</div>
+        <div class="payment-item">Transfer Bank</div>
+    </div>
+    <p style="margin-top:15px;">Total Bayar : <b>Rp ${harga.toLocaleString("id-ID")}</b></p>
+    `;
+}
+</script>
+
+</body>
+</html>
